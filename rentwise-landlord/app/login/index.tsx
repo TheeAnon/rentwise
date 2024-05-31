@@ -1,36 +1,83 @@
-<<<<<<< HEAD
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-
-const Login = () => {
-  return (
-    <View>
-      <Text>Login</Text>
-    </View>
-  );
-};
-
-export default Login;
-
-const styles = StyleSheet.create({});
-=======
-import React from 'react';
-import {View,StyleSheet,Text} from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  Text,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
+import Constants from "expo-constants";
+import { CustomInput } from "../../components/CustomInput";
 
 export default function Login() {
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
-    <View style={styles.container}>
-      <Text>Create an account</Text>
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Welcome back!</Text>
+        </View>
+        <View style={styles.content}>
+          <CustomInput
+            label="Email"
+            type="email"
+            placeholder="simonkimani@gmail.com"
+            value={email}
+            setValue={setEmail}
+          />
+          <CustomInput
+            label="Password"
+            type="password"
+            placeholder="******"
+            value={password}
+            setValue={setPassword}
+          />
+        </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Next</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-   container:{
-      flex: 1,
-      padding: 14,
-      paddingTop: 40      
-   }
+  safeArea: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: "#B1D8B7",
+  },
+  container: {
+    flexGrow: 1,
+    padding: 14,
+    paddingTop: 30,
+  },
+  header: {},
+  content: {
+    flex: 1,
+    paddingTop: 20,
+    gap: 15,
+    marginBottom: 10,
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "800",
+    lineHeight: 50,
+    color: "#000",
+  },
+  buttonText: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: "#fff",
+  },
+  button: {
+    width: "100%",
+    padding: 15,
+    borderRadius: 5,
+    backgroundColor: "black",
+  },
 });
->>>>>>> 5b5ce66ed91152ed312a615e8b82ea6a34fc366c
